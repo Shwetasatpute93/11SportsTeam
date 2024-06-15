@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      11Sports Team
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+  <div id="container">
+    <strong>Current location Is</strong>
+    <p>Lat : {{lat}}, Lng : {{lng}}</p>
+    <ion-button expand="full" (click)="WhereIam()">Get Start</ion-button>
+  </div>
+</ion-content>
