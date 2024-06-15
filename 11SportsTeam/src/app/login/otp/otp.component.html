@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      11Sports Team / OTP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <h3 class="loginheading">OTP send to your register Mobile Number</h3>
+ 
+  <form >
+      <ion-item align="center">
+       
+        <ng-otp-input
+        (onInputChange)="onOtpChange($event)"
+        [config]="config"></ng-otp-input>
+      
+      </ion-item>
+      <ion-item lines="none" class="ion-margin-horizontal">
+        <ion-button fill="clear" size="small" color="primary" slot="start" (click)="resend()">Resend OTP</ion-button>
+        <ion-button  size="small" color="success" slot="end" (click)="verifyotp()">Verify OTP</ion-button>
+      </ion-item>
+      <!-- <ion-button expand="full" >Verify OTP</ion-button> -->
+      
+    </form>
+
+</ion-content>

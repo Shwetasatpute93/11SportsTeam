@@ -1,20 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
+import { GetotpPage } from '../getotp/getotp.page';
+import { NgOtpInputModule } from  'ng-otp-input';
+import { OtpComponent } from './otp/otp.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    LoginPageRoutingModule,
+    NgOtpInputModule,
+    ReactiveFormsModule
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage,OtpComponent]
 })
 export class LoginPageModule {}

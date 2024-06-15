@@ -1,40 +1,55 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ModalController, ModalOptions,  NavController } from '@ionic/angular';
+import { GetotpPage } from '../getotp/getotp.page';
+import { OtpComponent } from './otp/otp.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
+
+
 export class LoginPage implements OnInit {
   
   mobileNumber !: string;
+  public turfForm : FormGroup;
+  swipeToClose?: boolean;
+  constructor(private route: Router,public fb : FormBuilder, private modalctrl: ModalController) {
 
-  constructor(private route: Router, private navCtrl: NavController) {
-
+    this.turfForm = this.fb.group({
+      mobileNumber : ['', Validators.required],
+     
+    });
   }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
 
-  navigateToOtpPage() {
-    // if (form.valid) {
-    //   // Here you would typically send the mobile number to your backend service to get the OTP
-    //   console.log('Mobile Number:', this.mobileNumber);
-    //   // Navigate to the OTP entry page
-    //   this.navCtrl.navigateForward('enterotp', {
-    //     queryParams: { mobileNumber: this.mobileNumber }
-    //   });
-    // }
-    // this.route.navigate(['/enterotp'])
-    
-      this.route.navigate(['/getotp'], {
-        queryParams: { mobileNumber: this.mobileNumber }
-       
-      });
-     
-   
+ async navigateToOtpPage() {
+    try {
+      if (this.turfForm.valid) {
+        console.log('Mobile Number:', this.turfForm.value.mobileNumber);
+  
+        const options: ModalOptions = {
+          component: OtpComponent,
+          componentProps: {
+            mobileNumber: this.turfForm.value.mobileNumber
+          },
+          // swipeToClose: true
+        };
+  
+        const modal = await this.modalctrl.create(options);
+        await modal.present();
+        const { data } = await modal.onWillDismiss();
+
+      }
+    } catch (e) {
+      console.error('Error navigating to OTP page:', e);
+    }
   }
 
 }

@@ -10,17 +10,14 @@
 
   <h3 class="loginheading">Login to 11SportsTeam</h3>
 
-  <form>
-   
-  </form>
-  <form #form="ngForm" >
-    <ion-item>
+  <form [formGroup]="turfForm" >
+    <!-- <ion-item>
       <ion-input placeholder="Enter Your Name"></ion-input>
      
-    </ion-item>
+    </ion-item> -->
     <ion-item>
 
-      <ion-input type="tel" [(ngModel)]="mobileNumber" name="mobileNumber" placeholder="Enter Mobile Number" required></ion-input>
+      <ion-input type="tel"  formControlName="mobileNumber" placeholder="Enter Mobile Number" required></ion-input>
     </ion-item>
     <ion-button expand="full" (click)="navigateToOtpPage()">Get OTP</ion-button>
     
