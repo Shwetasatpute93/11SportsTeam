@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GetotpPage } from './getotp.page';
+import { BooknowPage } from './booknow.page';
 
-describe('GetotpPage', () => {
-  let component: GetotpPage;
-  let fixture: ComponentFixture<GetotpPage>;
+describe('BooknowPage', () => {
+  let component: BooknowPage;
+  let fixture: ComponentFixture<BooknowPage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GetotpPage);
+    fixture = TestBed.createComponent(BooknowPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

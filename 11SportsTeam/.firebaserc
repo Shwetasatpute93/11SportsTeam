@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "sportsteam-3c6a5"
-  }
+    "default": "sportsteam-75b6d",
+    "staging": "sportsteam-75b6d"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

@@ -1,0 +1,35 @@
+.regid{
+    display: none;
+}
+
+.title{
+    font-size: 42px;
+    font-stretch: ultra-expanded;
+    font-variant-caps: all-petite-caps;
+    font-family: fangsong;
+    text-align: center;
+    color: #dc3545;
+}
+h3{
+    font-size: 20px;
+    font-weight: 600;
+    color: #dc3545;
+    display: contents;
+}
+.address{
+    font-size: 20px;
+    font-stretch: ultra-expanded;
+    font-family: fangsong;
+    font-variant-caps: normal;
+    display: flex;
+}
+
+.label{
+    font-size: 25px;
+    font-stretch: ultra-expanded;
+    font-family: fangsong;
+    font-variant-caps: petite-caps;
+    font-weight: 500;
+    color: #dc3545;
+    display: flex;
+}

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController, ModalOptions, ToastController } from '@ionic/angular';
+import { DashboardPage } from 'src/app/dashboard/dashboard.page';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-otp',
@@ -7,13 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OtpComponent  implements OnInit {
 
-  public otp: string | undefined;
+  @Input() mobileNumber: any;
+  public otp!: string;
   config = {
     length : 6,
     allowNumbersOnly: true,
     inputClass : 'otp-input-style'
   }
-  constructor() { }
+  constructor( private auth : AuthService,private modalctrl: ModalController, public router : Router, public toastController: ToastController ) { }
 
   ngOnInit() {}
 
@@ -22,11 +27,48 @@ export class OtpComponent  implements OnInit {
     console.log(this.otp);
   }
 
-  resend(){
+  async resend(){
+    try{
 
+      const response = await this.auth.signInWithPhoneNumber('+91' + this.mobileNumber);
+        console.log('response', response);
+
+    }catch(e){
+      console.log(e);
+    }
   }
 
-  verifyotp(){
+  async verifyOtp(){
+    try{
 
+      const response = await this.auth.verifyOtp(this.otp);
+      if(response == undefined){
+        const toast = await this.toastController.create({
+          color: 'success',
+          duration: 2000,
+          message: 'Details Saved successfully',
+          
+        });
+    
+        await toast.present();
+        this.router.navigate(['/dashboard']);
+        const options: ModalOptions = {
+          component: DashboardPage,
+         
+          // swipeToClose: true
+        };
+  
+        const modal = await this.modalctrl.create(options);
+        await modal.present();
+        const { data } = await modal.onWillDismiss();
+      }
+      else{
+        this.router.navigate(['/otp']);
+      }  
+
+
+    }catch(e){
+      console.log(e);
+    }
   }
 }

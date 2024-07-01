@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>booknow</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+    <div class="text" *ngFor="let item of details">
+
+      <ion-card-header>
+        <ion-card-title class="title">
+          {{item.turfname}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content class="address">
+         <h3> Address  : </h3> {{address}}
+      </ion-card-content>
+
+      <form [formGroup]="turfForm">
+        <ion-item >
+          <ion-label class="label" position="stacked">regid</ion-label>
+          <ion-input placeholder="Enter mobile no"  formControlName="regid" [(ngModel)]="item.regid"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="stacked">Name</ion-label>
+          <ion-input placeholder="Enter Name" formControlName="firstname"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="stacked">Mobile No</ion-label>
+          <ion-input placeholder="Enter Name" formControlName="mobileno"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Time Slots</ion-label>
+          <ion-select  value="Select Time slots" formControlName="timeslots"  okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="12pm-1pm">12pm-1pm</ion-select-option>
+            <ion-select-option value="1pm-2pm">1pm-2pm</ion-select-option>
+            <ion-select-option value="4pm-5pm">4pm-5pm</ion-select-option>
+            <ion-select-option value="5pm-6pm">5pm-6pm</ion-select-option>
+            <ion-select-option value="6pm-7pm">6pm-7pm</ion-select-option>
+            <ion-select-option value="7pm-8pm">7pm-8pm</ion-select-option>
+            <ion-select-option value="8pm-9pm">8pm-9pm</ion-select-option>
+            <ion-select-option value="9pm-10pm">9pm-10pm</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="stacked">Rate</ion-label>
+          <ion-input placeholder="placeholder" formControlName="rate" [(ngModel)]="total" readonly></ion-input>
+        </ion-item> 
+        <ion-button expand="full" (click)="Savedetails()">Pay & Book</ion-button>
+        
+        
+  </form>
+
+    </div>
+
+</ion-content>

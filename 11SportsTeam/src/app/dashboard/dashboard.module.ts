@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
+import { FilterPipe } from '../filter.pipe'; 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DashboardPageRoutingModule
+    DashboardPageRoutingModule,
+    FilterPipe
   ],
   declarations: [DashboardPage]
 })

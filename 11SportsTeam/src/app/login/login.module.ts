@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
-import { GetotpPage } from '../getotp/getotp.page';
 import { NgOtpInputModule } from  'ng-otp-input';
 import { OtpComponent } from './otp/otp.component';
 

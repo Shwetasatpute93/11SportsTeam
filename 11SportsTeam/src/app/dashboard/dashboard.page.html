@@ -1,12 +1,28 @@
-<!-- <ion-header [translucent]="true">
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Dashboard</ion-title>
   </ion-toolbar>
-</ion-header> -->
+</ion-header>
 <ion-content [fullscreen]="true">
-  <!-- <ion-toolbar>
-    <ion-searchbar></ion-searchbar>
-  </ion-toolbar> -->
+ 
+    <ion-searchbar [(ngModel)]="searchText"></ion-searchbar>
+    
+
+  <ion-grid>
+      <ion-row>
+        <div *ngFor="let item of getalldata | filter:searchText">
+          <ion-card>
+            <ion-card-content>
+           
+            <h2 class="displayname">{{item.turfname}}</h2>
+            <ion-button  size="small" color="primary" slot="end" (click)="book(item.regid)" >Book Now</ion-button>
+            </ion-card-content>
+           
+          </ion-card>
+        </div>
+      </ion-row>
+  </ion-grid>
+  
 
   
 

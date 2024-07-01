@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, ModalOptions,  NavController } from '@ionic/angular';
-import { GetotpPage } from '../getotp/getotp.page';
 import { OtpComponent } from './otp/otp.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
   mobileNumber !: string;
   public turfForm : FormGroup;
   swipeToClose?: boolean;
-  constructor(private route: Router,public fb : FormBuilder, private modalctrl: ModalController) {
+  constructor(private route: Router,public fb : FormBuilder, private modalctrl: ModalController, private auth : AuthService) {
 
     this.turfForm = this.fb.group({
       mobileNumber : ['', Validators.required],
@@ -33,7 +33,8 @@ export class LoginPage implements OnInit {
     try {
       if (this.turfForm.valid) {
         console.log('Mobile Number:', this.turfForm.value.mobileNumber);
-  
+        const response = await this.auth.signInWithPhoneNumber('+91' + this.turfForm.value.mobileNumber);
+        console.log('response', response);
         const options: ModalOptions = {
           component: OtpComponent,
           componentProps: {
